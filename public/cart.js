@@ -5,18 +5,22 @@ let items = [];
 // The sandwich selected in the cart (defaults to the first sandwich)
 let selectedSandwich = null;
 
-// Updates the DOM to display a list of sandwiches from the cart
-function renderCart() {
-    const sandwichUl = document.querySelector('.sandwich-list');
 
-    // Empty the sandwichUl before adding any content to it.
-    sandwichUl.innerHTML = '';
+// Updates the DOM to display a list of ingredients:
+    render() {
+    const ingredientList = document.querySelector('.ingredient-list');
 
-    items.forEach((sandwich) => {
-        const sandwichDiv = createSandwichCard(sandwich);
-        sandwichUl.append(sandwichDiv)
+    // Empty the ingredientList before adding any content to it.
+    ingredientList.innerHTML = '';
+    ingredients.forEach(ingredient => {
+        const ingredientDiv = this.renderIngredientCard(ingredient);
+        ingredientList.append(ingredientDiv);
     })
 }
+
+
+
+
 
 // Creates a DIV to display a single sandwich
 function createSandwichCard(sandwich) {
@@ -63,8 +67,11 @@ function selectSandwich(sandwich) {
     const nameInput = document.querySelector(`.name-input`)
     nameInput.value = sandwich.name
 
-    renderCart()
-    renderIngredientList()
+   
+renderCart()
+ingredientList.render()
+
+
 }
 
 // We'll use this function to save the sandwich, either
